@@ -1,67 +1,35 @@
-# @xwfintech/logger
+# @xwfintech/zookeeper
 
 ## 安装
 
 ```sh
 npm config set @xwfintech:registry http://xwnpm.xwfintech.com
-npm install @xwfintech/logger
+npm install @xwfintech/zookeeper
 ```
 
 ## 使用
 
 ```ts
-interface LoggerOptions {
-  file?: string,
-  log_id?: string,
-  merchant_code?: string,
-  time?: string,
-  remote_service?: string,
-  user_agent?: string,
-  url_path?: string,
-  method?: string,
-  cost_time?: string,
-  project?: string,
-  status?: number,
-  level?: string,
-  extra?: any,
-  code?: number,
-  msg?: string
+interface IOptions {
+  sessionTimeout: number;
+  spinDelay: number;
+  retries: number;
 }
 ```
 
-### koa
-
 ```ts
-// es6
-import logger from '@xwfintech/logger';
-// es5
-const logger = require('@xwfintech/logger').default;
-const Koa = require('koa');
-const app = new Koa();
+import zk from '@xwfintech/zookeeper';
 
-app.use(logger('koa'));
+// 方法
+zk.init(host: string, znode: string, options: IOptions): Promise<{}>
+zk.get(key: string): string
 
-// or
-app.use(logger('koa', (ctx, logId) => {
-  // 特殊需求
-}));
-
-ctx.logger.debug(msg: string, options?: LoggerOptions);
-ctx.logger.info(msg: string, options?: LoggerOptions);
-ctx.logger.warn(msg: string, options?: LoggerOptions);
-ctx.logger.error(msg: string, options?: LoggerOptions);
+// 监听 onZookeeperUpdate 事件（当配置更新时会 emit onZookeeperUpdate 事件）
+zk.on('onZookeeperUpdate', (zkConfig) => {
+  axios.defaults.baseURL = `${zkConfig.SUPPORT_HOST}/api/v1`;
+});
 ```
 
-### node（普通调用）
+## 依赖
 
-```ts
-// es6
-import logger from '@xwfintech/logger/lib/node';
-// es5
-const logger = require('@xwfintech/logger/lib/node').default;
-
-logger.debug(msg: string, options?: LoggerOptions);
-logger.info(msg: string, options?: LoggerOptions);
-logger.warn(msg: string, options?: LoggerOptions);
-logger.error(msg: string, options?: LoggerOptions);
-```
+ - [node-zookeeper-client](https://github.com/alexguan/node-zookeeper-client)
