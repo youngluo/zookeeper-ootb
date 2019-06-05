@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "module": "es2015",
+    "declaration": true,
+    "declarationDir": "lib/types",
+    "removeComments": true,
+    "target": "es2015",
+    "strict": true,
+    "sourceMap": false,
+    "outDir": "./lib",
+    "typeRoots": [
+      "node_modules/@types"
+    ]
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "src"
+  ]
+}
