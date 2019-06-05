@@ -1,6 +1,6 @@
 {
-  "name": "@xwfintech/zookeeper",
-  "version": "1.0.0",
+  "name": "zookeeper-ootb",
+  "version": "0.0.0",
   "description": "",
   "main": "./lib/index.js",
   "module": "./lib/index.es.js",
@@ -9,7 +9,6 @@
     "start": "ts-node -r tsconfig-paths/register src/index.ts",
     "build": "tsc --module commonjs && rollup -c rollup.config.js",
     "commit": "git add -A && git-cz",
-    "publish": "npm publish --registry http://xwnpm.xwfintech.com",
     "release-major": "yarn build && standard-version -r major",
     "release-minor": "yarn build && standard-version -r minor",
     "release-patch": "yarn build && standard-version -r patch"
@@ -33,7 +32,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@gitlab.xwfintech.com:youngluo/zookeeper.git"
+    "url": "https://github.com/youngluo/zookeeper-ootb.git"
   },
   "keywords": [
     "zookeeper"

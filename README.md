@@ -1,10 +1,9 @@
-# @xwfintech/zookeeper
+# zookeeper-ootb
 
 ## 安装
 
 ```sh
-npm config set @xwfintech:registry http://xwnpm.xwfintech.com
-npm install @xwfintech/zookeeper
+npm install zookeeper-ootb
 ```
 
 ## 使用
@@ -18,7 +17,7 @@ interface IOptions {
 ```
 
 ```ts
-import zk from '@xwfintech/zookeeper';
+import zk from 'zookeeper-ootb';
 
 // 方法
 zk.init(host: string, znode: string, options: IOptions): Promise<{}>
